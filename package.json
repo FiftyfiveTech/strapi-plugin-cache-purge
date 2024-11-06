@@ -1,7 +1,7 @@
 {
   "name": "@fiftyfivetech/strapi-plugin-cache-purge",
   "description": "Strapi Manage Redis Cache from Dashboard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [],
   "type": "commonjs",
   "strapi": {
