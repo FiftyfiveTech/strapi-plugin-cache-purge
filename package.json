@@ -1,0 +1,75 @@
+{
+  "name": "@fiftyfivetech/strapi-plugin-cache-purge",
+  "description": "Strapi Manage Redis Cache from Dashboard",
+  "version": "1.0.0",
+  "keywords": [],
+  "type": "commonjs",
+  "strapi": {
+    "kind": "plugin",
+    "name": "strapi-plugin-cache-purge",
+    "displayName": "Cache Purge",
+    "description": "Manage Cache from Dashboard"
+  },
+  "scripts": {
+    "build": "strapi-plugin build",
+    "watch": "strapi-plugin watch",
+    "watch:link": "strapi-plugin watch:link",
+    "verify": "strapi-plugin verify",
+    "test:ts:front": "run -T tsc -p admin/tsconfig.json",
+    "release": "npm run build && commit-and-tag-version && git push --follow-tags && npm publish"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    "./strapi-admin": {
+      "types": "./dist/admin/src/index.d.ts",
+      "source": "./admin/src/index.ts",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@strapi/design-system": "^2.0.0-rc.12",
+    "@strapi/icons": "^2.0.0-rc.12",
+    "react-intl": "^6.8.4"
+  },
+  "devDependencies": {
+    "commit-and-tag-version": "12.5.0",
+    "@strapi/admin": "^5.2.0",
+    "@strapi/sdk-plugin": "^5.2.7",
+    "@strapi/strapi": "^5.2.0",
+    "@strapi/typescript-utils": "^5.2.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "prettier": "^3.3.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.27.0",
+    "styled-components": "^6.1.13",
+    "typescript": "^5.6.3"
+  },
+  "peerDependencies": {
+    "@strapi/sdk-plugin": "^5.2.7",
+    "@strapi/strapi": "^5.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.27.0",
+    "styled-components": "^6.1.13"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FiftyfiveTech/strapi-plugin-cache-purge.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "author": "Ganesh Agrawal <ganesh.agrawal@fiftyfivetech.io>",
+  "volta": {
+    "node": "18.20.4"
+  }
+}
