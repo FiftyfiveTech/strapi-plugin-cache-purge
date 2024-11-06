@@ -1,24 +1,7 @@
-import { Page, useFetchClient } from '@strapi/strapi/admin';
-
-import { useIntl } from 'react-intl';
-
-import { getTranslation } from '../utils/getTranslation';
+import { Page, useFetchClient, useNotification } from '@strapi/strapi/admin';
 import { useEffect, useState } from 'react';
 import { Layouts } from '../components/Layouts/Layout';
-import {
-  Box,
-  Button,
-  Flex,
-  Grid,
-  Main,
-  Typography,
-  Link,
-  LinkButton,
-  TypographyComponent,
-  BoxComponent,
-  FlexComponent,
-} from '@strapi/design-system';
-import styled from 'styled-components';
+import { Box, Button, Flex, Grid, Main, Typography } from '@strapi/design-system';
 import { ArrowClockwise, Trash } from '@strapi/icons';
 import { Table, Thead, Tbody, Tr, Td, Th } from '@strapi/design-system';
 
@@ -27,9 +10,9 @@ interface CacheKeyApiResponse {
 }
 
 const HomePage = () => {
-  const { formatMessage } = useIntl();
   const [cacheKeys, setCacheKeys] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
+  const { toggleNotification } = useNotification();
 
   const { get, del } = useFetchClient();
 
@@ -38,23 +21,38 @@ const HomePage = () => {
     try {
       const resp = await get<CacheKeyApiResponse>('/api/cache');
       setCacheKeys(resp.data.keys);
+      toggleNotification({
+        type: "success",
+        message: "Cache Key Refreshed"
+      })
     } catch (error) {
       console.error('Cache API call failed:', error);
+      toggleNotification({
+        type: "warning",
+        message: error as string || "Cache API Call Failed"
+      })
     }
     setLoading(false);
   };
 
   const purgeCache = async () => {
     setLoading(true);
-    setTimeout(async () => {
-      try {
-        await del('/api/cache');
-        await fetchCacheKeys();
-      } catch (error) {
-        console.error('Cache Purge failed:', error);
-      }
+    try {
+      await del('/api/cache');
+      setCacheKeys([]);
+      toggleNotification({
+        type: "success",
+        message: "Cache Cleared"
+      })
+    } catch (error) {
+      console.error('Cache Purge failed:', error);
+      toggleNotification({
+        type: "warning",
+        message: error as string || "Cache Clear API Call Failed"
+      })
+    } finally {
       setLoading(false);
-    }, 5000);
+    }
   };
 
   useEffect(() => {
@@ -85,7 +83,11 @@ const HomePage = () => {
                 <Tbody>
                   {cacheKeys.map((key, idx) => (
                     <Tr key={key}>
-                      <Td><Typography variant="delta" textColor="neutral800">{key}</Typography></Td>
+                      <Td>
+                        <Typography variant="delta" textColor="neutral800">
+                          {key}
+                        </Typography>
+                      </Td>
                     </Tr>
                   ))}
                 </Tbody>
