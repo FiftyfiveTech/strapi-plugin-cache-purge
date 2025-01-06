@@ -153,7 +153,7 @@ const useElementOnScreen = <TElement extends HTMLElement = HTMLElement>(
     const observer = new IntersectionObserver(callback, options);
 
     if (containerEl) {
-      observer.observe(containerRef.current);
+      observer.observe(containerRef.current as TElement);
     }
 
     return () => {
@@ -163,7 +163,7 @@ const useElementOnScreen = <TElement extends HTMLElement = HTMLElement>(
     };
   }, [containerRef, options]);
 
-  return [containerRef, isVisible];
+  return [containerRef as React.RefObject<TElement>, isVisible];
 };
 
 /**
