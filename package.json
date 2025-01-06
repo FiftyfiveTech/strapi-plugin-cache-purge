@@ -32,32 +32,32 @@
     "dist"
   ],
   "dependencies": {
-    "@strapi/design-system": "^2.0.0-rc.12",
-    "@strapi/icons": "^2.0.0-rc.12",
-    "react-intl": "^6.8.4"
+    "@strapi/design-system": "^2.0.0-rc.14",
+    "@strapi/icons": "^2.0.0-rc.14",
+    "react-intl": "^7.1.0"
   },
   "devDependencies": {
     "commit-and-tag-version": "12.5.0",
-    "@strapi/admin": "^5.2.0",
-    "@strapi/sdk-plugin": "^5.2.7",
-    "@strapi/strapi": "^5.2.0",
-    "@strapi/typescript-utils": "^5.2.0",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "prettier": "^3.3.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.27.0",
-    "styled-components": "^6.1.13",
-    "typescript": "^5.6.3"
+    "@strapi/admin": "^5.6.0",
+    "@strapi/sdk-plugin": "^5.2.8",
+    "@strapi/strapi": "^5.6.0",
+    "@strapi/typescript-utils": "^5.6.0",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "prettier": "^3.4.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.1",
+    "styled-components": "^6.1.14",
+    "typescript": "^5.7.2"
   },
   "peerDependencies": {
-    "@strapi/sdk-plugin": "^5.2.7",
-    "@strapi/strapi": "^5.2.0",
+    "@strapi/sdk-plugin": "^5.2.8",
+    "@strapi/strapi": "^5.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.27.0",
-    "styled-components": "^6.1.13"
+    "react-router-dom": "^6.28.1",
+    "styled-components": "^6.1.14"
   },
   "license": "MIT",
   "repository": {
